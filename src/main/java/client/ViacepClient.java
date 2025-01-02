@@ -1,5 +1,7 @@
 package client;
 
+import static constants.ApplicationConstants.VALID_CEP;
+import static constants.EndpointConstants.CEP_BY_ID;
 import static constants.EndpointConstants.HTTP_200_UP;
 import static io.restassured.RestAssured.given;
 
@@ -18,6 +20,14 @@ public class ViacepClient {
     return given().spec(requestSpec)
     .when()
     .get(HTTP_200_UP)
+    .then();
+  }
+
+  public ValidatableResponse getCepById(){
+    return given().spec(requestSpec)
+    .when()
+    .pathParam("cep", VALID_CEP)
+    .get(CEP_BY_ID)
     .then();
   }
 }
