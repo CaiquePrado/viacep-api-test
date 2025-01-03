@@ -15,5 +15,5 @@ public class ApplicationConstants {
 
   public static final String SCHEMAS = "src/test/resources/schemas/";
   public static final String GET_VALID_CEP_CONTRACT_JSON = "GET-valid-cep.json";
-  public static final String GET_INVALID_CEP_CONTRACT_JSON = "GET-valid-cep.json";
+  public static final String GET_VALID_CEP_BUT_NONE_EXISTENT_JSON = "GET-valid-cep-but-none-existent.json";
 }
