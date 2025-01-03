@@ -2,6 +2,7 @@ package functional;
 
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.annotations.Test;
 
@@ -29,5 +30,13 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getInvalidCepById()
     .statusCode(SC_BAD_REQUEST);
+  }
+
+  @Test
+  public void validButNonexistentCepTest(){
+    viacepClient
+    .getValidButNonexistentCep()
+    .statusCode(SC_OK)
+    .body("erro", equalTo("true"));
   }
 }
