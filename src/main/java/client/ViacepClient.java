@@ -2,6 +2,7 @@ package client;
 
 import static constants.ApplicationConstants.INVALID_CEP;
 import static constants.ApplicationConstants.VALID_CEP;
+import static constants.ApplicationConstants.VALID_CEP_BUT_NONE_EXISTENT;
 import static constants.EndpointConstants.CEP_BY_ID;
 import static constants.EndpointConstants.HTTP_200_UP;
 import static io.restassured.RestAssured.given;
@@ -36,6 +37,14 @@ public class ViacepClient {
     return given().spec(requestSpec)
     .when()
     .pathParam("cep", INVALID_CEP)
+    .get(CEP_BY_ID)
+    .then();
+  }
+
+  public ValidatableResponse getValidButNonexistentCep(){
+    return given().spec(requestSpec)
+    .when()
+    .pathParam("cep", VALID_CEP_BUT_NONE_EXISTENT)
     .get(CEP_BY_ID)
     .then();
   }
