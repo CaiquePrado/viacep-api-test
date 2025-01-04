@@ -48,4 +48,12 @@ public class ViacepClient {
     .get(CEP_BY_ID)
     .then();
   }
+
+  public ValidatableResponse getNoCep(){
+    return given().spec(requestSpec)
+    .when()
+    .pathParam("cep","")
+    .get(CEP_BY_ID)
+    .then();
+  }
 }
