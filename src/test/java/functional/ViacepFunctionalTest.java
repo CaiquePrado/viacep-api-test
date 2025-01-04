@@ -24,6 +24,7 @@ public class ViacepFunctionalTest extends BaseTest {
     //TODO:Adicionar description no @Test referentes aos cenários de teste.
     //TODO:Adicionar logs em todo processo.
     //TODO:Implementar allure reports.
+    //TODO:Mudar nome dos testes para padão Deve.
   }
 
   @Test
@@ -46,5 +47,12 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getNoCep()
     .statusCode(SC_BAD_REQUEST);
+  }
+
+  @Test
+  public void validCepByAddressTest(){
+    viacepClient
+    .getCepByAddress()
+    .statusCode(SC_OK);
   }
 }
