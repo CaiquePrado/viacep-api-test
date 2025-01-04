@@ -23,6 +23,7 @@ public class ViacepFunctionalTest extends BaseTest {
     //TODO: Fazer teste de ValidCepTest com provider para usar mais ceps e com mais diferencas que são certos. Ex: 01001-000 e 01001000.
     //TODO:Adicionar description no @Test referentes aos cenários de teste.
     //TODO:Adicionar logs em todo processo.
+    //TODO:Implementar allure reports.
   }
 
   @Test
@@ -38,5 +39,12 @@ public class ViacepFunctionalTest extends BaseTest {
     .getValidButNonexistentCep()
     .statusCode(SC_OK)
     .body("erro", equalTo("true"));
+  }
+
+  @Test
+  public void noCepTest(){
+    viacepClient
+    .getNoCep()
+    .statusCode(SC_BAD_REQUEST);
   }
 }
