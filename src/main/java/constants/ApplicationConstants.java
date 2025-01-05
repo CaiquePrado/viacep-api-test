@@ -14,6 +14,7 @@ public class ApplicationConstants {
   public static final String VALID_CEP_BUT_NONE_EXISTENT = "99999-999";
 
   public static final String VALID_ADDRESS = "RS/PortoAlegre/Domingos";
+  public static final String ADDRESS_WHITHOUT_UF = "/PortoAlegre/Domingos";
 
   public static final String SCHEMAS = "src/test/resources/schemas/";
   public static final String GET_VALID_CEP_CONTRACT_JSON = "GET-valid-cep.json";
