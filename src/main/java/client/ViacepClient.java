@@ -63,6 +63,14 @@ public class ViacepClient {
     .then();
   }
 
+  public ValidatableResponse getCepByAddressInvalidUF(){
+    return  given().spec(requestSpec)
+            .when()
+            .pathParam("cep",ADDRESS_INVALID_UF)
+            .get(CEP_BY_ID)
+            .then();
+  }
+
   public ValidatableResponse getCepByAddressWhithoutUF(){
     return  given().spec(requestSpec)
     .when()
