@@ -22,7 +22,7 @@ jobs:
         run: gradle clean test --tests 'ViacepHealthCheckTest'
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Test Results
           path: target/extent-output/*.html
@@ -41,7 +41,7 @@ jobs:
         run: gradle clean test --tests 'ViacepContractTest'
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Test Results
           path: target/extent-output/*.html
@@ -60,7 +60,7 @@ jobs:
         run: gradle clean test --tests 'ViacepFunctionalTest'
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Test Results
           path: target/extent-output/*.html
