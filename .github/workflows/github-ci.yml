@@ -11,7 +11,7 @@ on:
 jobs:
   healthcheck:
     name: Health Check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     container:
       image: gradle:8.12.0-jdk21
     steps:
@@ -29,7 +29,7 @@ jobs:
 
   contract:
     name: Contract
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: healthcheck
     container:
       image: gradle:8.12.0-jdk21
@@ -48,7 +48,7 @@ jobs:
 
   functional:
     name: Functional
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: contract
     container:
       image: gradle:8.12.0-jdk21
