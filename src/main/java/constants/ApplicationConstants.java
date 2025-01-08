@@ -15,6 +15,7 @@ public class ApplicationConstants {
 
   public static final String VALID_ADDRESS = "RS/Porto/Domingos";
   public static final String ADDRESS_WHITHOUT_UF = "/PortoAlegre/Domingos";
+  public static final String ADDRESS_WHITHOUT_CITY = "RS/Domingos";
   public static final String ADDRESS_INVALID_UF = "$*/PortoAlegre/Domingos";
 
   public static final String SCHEMAS = "src/test/resources/schemas/";
