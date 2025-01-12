@@ -64,14 +64,14 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void CepByAddressWhithoutUFTest(){
+  public void CepByAddressWithoutUFTest(){
     viacepClient
     .getCepByAddressWhithoutUF()
     .statusCode(SC_BAD_REQUEST);
   }
 
   @Test
-  public void CepByAddressWhithoutCityTest(){
+  public void CepByAddressWithoutCityTest(){
     viacepClient
     .getCepByAddressWhithoutCity()
     .statusCode(SC_BAD_REQUEST);
@@ -88,6 +88,13 @@ public class ViacepFunctionalTest extends BaseTest {
   public void CepByAddressInvalidStreetTest(){
     viacepClient
     .getCepByAddressInvalidStreet()
+    .statusCode(SC_BAD_REQUEST);
+  }
+
+  @Test
+  public void CepByAddressWithoutStreetTest(){
+    viacepClient
+    .getCepByAddressWhithoutStreet()
     .statusCode(SC_BAD_REQUEST);
   }
 }
