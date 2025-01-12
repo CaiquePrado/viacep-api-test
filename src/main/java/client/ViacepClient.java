@@ -102,4 +102,12 @@ public class ViacepClient {
     .get(CEP_BY_ID)
     .then();
   }
+
+  public ValidatableResponse getCepByAddressWhithoutStreet(){
+    return given().spec(requestSpec)
+    .when()
+    .pathParam("cep",ADDRESS_INVALID_STREET)
+    .get(CEP_BY_ID)
+    .then();
+  }
 }

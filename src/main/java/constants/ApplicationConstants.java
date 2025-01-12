@@ -14,11 +14,12 @@ public class ApplicationConstants {
   public static final String VALID_CEP_BUT_NONE_EXISTENT = "99999-999";
 
   public static final String VALID_ADDRESS = "RS/Porto/Domingos";
-  public static final String ADDRESS_WHITHOUT_UF = "/PortoAlegre/Domingos";
+  public static final String ADDRESS_WITHOUT_UF = "/PortoAlegre/Domingos";
   public static final String ADDRESS_INVALID_UF = "$*/PortoAlegre/Domingos";
-  public static final String ADDRESS_WHITHOUT_CITY = "RS/Domingos";
+  public static final String ADDRESS_WITHOUT_CITY = "RS/Domingos";
   public static final String ADDRESS_INVALID_CITY = "RS/Porto/ab";
   public static final String ADDRESS_INVALID_STREET = "RS/Porto/1";
+  public static final String ADDRESS_WITHOUT_STREET = "RS/Porto/";
 
   public static final String SCHEMAS = "src/test/resources/schemas/";
   public static final String GET_VALID_CEP_CONTRACT_JSON = "GET-valid-cep.json";
