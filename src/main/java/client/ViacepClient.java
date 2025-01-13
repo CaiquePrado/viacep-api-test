@@ -71,18 +71,18 @@ public class ViacepClient {
     .then();
   }
 
-  public ValidatableResponse getCepByAddressWhithoutUF(){
+  public ValidatableResponse getCepByAddressWithoutUF(){
     return  given().spec(requestSpec)
     .when()
-    .pathParam("cep",ADDRESS_WHITHOUT_UF)
+    .pathParam("cep",ADDRESS_WITHOUT_UF)
     .get(CEP_BY_ID)
     .then();
   }
 
-  public ValidatableResponse getCepByAddressWhithoutCity(){
+  public ValidatableResponse getCepByAddressWithoutCity(){
     return  given().spec(requestSpec)
     .when()
-    .pathParam("cep",ADDRESS_WHITHOUT_CITY)
+    .pathParam("cep",ADDRESS_WITHOUT_CITY)
     .get(CEP_BY_ID)
     .then();
   }
@@ -103,10 +103,10 @@ public class ViacepClient {
     .then();
   }
 
-  public ValidatableResponse getCepByAddressWhithoutStreet(){
+  public ValidatableResponse getCepByAddressWithoutStreet(){
     return given().spec(requestSpec)
     .when()
-    .pathParam("cep",ADDRESS_INVALID_STREET)
+    .pathParam("cep",ADDRESS_WITHOUT_STREET)
     .get(CEP_BY_ID)
     .then();
   }
