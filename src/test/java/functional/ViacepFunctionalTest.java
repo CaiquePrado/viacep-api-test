@@ -3,9 +3,7 @@ package functional;
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.containsString;
-import static org.testng.Assert.assertEquals;
 import static org.hamcrest.Matchers.equalTo;
-import responses.ErrorMessage;
 
 
 import factory.ErrorMessageFactory;
@@ -28,14 +26,12 @@ public class ViacepFunctionalTest extends BaseTest {
 
   @Test
   public void invalidCepTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getInvalidCepById()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
   @Test
@@ -48,14 +44,12 @@ public class ViacepFunctionalTest extends BaseTest {
 
   @Test
   public void noCepTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getNoCep()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
   @Test
@@ -67,74 +61,62 @@ public class ViacepFunctionalTest extends BaseTest {
 
   @Test
   public void CepByAddressInvalidUFTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getCepByAddressInvalidUF()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
   @Test
   public void CepByAddressWithoutUFTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getCepByAddressWithoutUF()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
   @Test
   public void CepByAddressWithoutCityTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getCepByAddressWithoutCity()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
   @Test
   public void CepByAddressInvalidCityTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getCepByAddressWithoutCity()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
   @Test
   public void CepByAddressInvalidStreetTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getCepByAddressInvalidStreet()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
   @Test
   public void CepByAddressWithoutStreetTest(){
-    ErrorMessage expectedError = ErrorMessageFactory.badRequestErrorMessage();
-
     viacepClient
     .getCepByAddressWithoutStreet()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(expectedError.getStatus()))
-    .body(containsString(expectedError.getTitle()))
-    .body(containsString(expectedError.getDetails()));
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 }
 
