@@ -4,17 +4,14 @@ import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
-
-
 import factory.ErrorMessageFactory;
 import org.testng.annotations.Test;
-
 import client.BaseTest;
 import responses.Address;
 
 public class ViacepFunctionalTest extends BaseTest {
   
-  @Test
+  @Test(description ="Should return valid details for a given valid CEP")
   public void shouldReturnValidCepDetails(){
     viacepClient
     .getCepById()
@@ -24,7 +21,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .as(Address.class);
   }
 
-  @Test
+  @Test(description = "Should return a bad request error for an invalid CEP")
   public void shouldReturnErrorForInvalidCep(){
     viacepClient
     .getInvalidCepById()
@@ -34,7 +31,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
-  @Test
+  @Test(description = "Should return an error when the CEP is valid but does not exist")
   public void shouldReturnErrorForValidButNonexistentCep(){
     viacepClient
     .getValidButNonexistentCep()
@@ -42,7 +39,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .body("erro", equalTo("true"));
   }
 
-  @Test
+  @Test(description = "Should return a bad request error when no CEP is provided")
   public void shouldReturnErrorWhenNoCepIsProvided(){
     viacepClient
     .getNoCep()
@@ -52,14 +49,14 @@ public class ViacepFunctionalTest extends BaseTest {
     .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
-  @Test
+  @Test(description = "Should return a valid CEP based on a given address")
   public void shouldReturnValidCepByAddress(){
     viacepClient
     .getCepByAddress()
     .statusCode(SC_OK);
   }
 
-  @Test
+  @Test(description = "Should return a bad request error for an address with an invalid UF")
   public void shouldReturnErrorForAddressWithInvalidUF(){
     viacepClient
     .getCepByAddressInvalidUF()
@@ -69,7 +66,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
-  @Test
+  @Test(description = "Should return a bad request error for an address without UF")
   public void shouldReturnErrorForAddressWithoutUF(){
     viacepClient
     .getCepByAddressWithoutUF()
@@ -79,7 +76,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
-  @Test
+  @Test(description = "Should return a bad request error for an address without a city")
   public void shouldReturnErrorForAddressWithoutCity(){
     viacepClient
     .getCepByAddressWithoutCity()
@@ -89,7 +86,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
-  @Test
+  @Test(description = "Should return a bad request error for an address with an invalid city")
   public void shouldReturnErrorForAddressWithInvalidCity(){
     viacepClient
     .getCepByAddressWithoutCity()
@@ -99,7 +96,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
-  @Test
+  @Test(description = "Should return a bad request error for an address with an invalid street")
   public void shouldReturnErrorForAddressWithInvalidStreet(){
     viacepClient
     .getCepByAddressInvalidStreet()
@@ -109,7 +106,7 @@ public class ViacepFunctionalTest extends BaseTest {
     .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
   }
 
-  @Test
+  @Test(description = "Should return a bad request error for an address without a street")
   public void shouldReturnErrorForAddressWithoutStreet(){
     viacepClient
     .getCepByAddressWithoutStreet()
