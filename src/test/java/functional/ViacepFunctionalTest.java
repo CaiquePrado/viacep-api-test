@@ -15,7 +15,7 @@ import responses.Address;
 public class ViacepFunctionalTest extends BaseTest {
   
   @Test
-  public void ValidCepTest(){
+  public void shouldReturnValidCepDetails(){
     viacepClient
     .getCepById()
     .statusCode(SC_OK)
@@ -25,7 +25,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void invalidCepTest(){
+  public void shouldReturnErrorForInvalidCep(){
     viacepClient
     .getInvalidCepById()
     .statusCode(SC_BAD_REQUEST)
@@ -35,7 +35,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void validButNonexistentCepTest(){
+  public void shouldReturnErrorForValidButNonexistentCep(){
     viacepClient
     .getValidButNonexistentCep()
     .statusCode(SC_OK)
@@ -43,7 +43,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void noCepTest(){
+  public void shouldReturnErrorWhenNoCepIsProvided(){
     viacepClient
     .getNoCep()
     .statusCode(SC_BAD_REQUEST)
@@ -53,14 +53,14 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void validCepByAddressTest(){
+  public void shouldReturnValidCepByAddress(){
     viacepClient
     .getCepByAddress()
     .statusCode(SC_OK);
   }
 
   @Test
-  public void CepByAddressInvalidUFTest(){
+  public void shouldReturnErrorForAddressWithInvalidUF(){
     viacepClient
     .getCepByAddressInvalidUF()
     .statusCode(SC_BAD_REQUEST)
@@ -70,7 +70,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void CepByAddressWithoutUFTest(){
+  public void shouldReturnErrorForAddressWithoutUF(){
     viacepClient
     .getCepByAddressWithoutUF()
     .statusCode(SC_BAD_REQUEST)
@@ -80,7 +80,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void CepByAddressWithoutCityTest(){
+  public void shouldReturnErrorForAddressWithoutCity(){
     viacepClient
     .getCepByAddressWithoutCity()
     .statusCode(SC_BAD_REQUEST)
@@ -90,7 +90,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void CepByAddressInvalidCityTest(){
+  public void shouldReturnErrorForAddressWithInvalidCity(){
     viacepClient
     .getCepByAddressWithoutCity()
     .statusCode(SC_BAD_REQUEST)
@@ -100,7 +100,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void CepByAddressInvalidStreetTest(){
+  public void shouldReturnErrorForAddressWithInvalidStreet(){
     viacepClient
     .getCepByAddressInvalidStreet()
     .statusCode(SC_BAD_REQUEST)
@@ -110,7 +110,7 @@ public class ViacepFunctionalTest extends BaseTest {
   }
 
   @Test
-  public void CepByAddressWithoutStreetTest(){
+  public void shouldReturnErrorForAddressWithoutStreet(){
     viacepClient
     .getCepByAddressWithoutStreet()
     .statusCode(SC_BAD_REQUEST)
@@ -126,4 +126,3 @@ public class ViacepFunctionalTest extends BaseTest {
 //TODO:Adicionar description no @Test referentes aos cenários de teste.
 //TODO:Adicionar logs em todo processo.
 //TODO:Implementar allure reports.
-//TODO:Mudar nome dos testes para padão Deve.
