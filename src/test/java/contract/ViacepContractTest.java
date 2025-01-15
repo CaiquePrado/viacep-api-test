@@ -11,28 +11,29 @@ import org.testng.annotations.Test;
 import client.BaseTest;
 
 public class ViacepContractTest extends BaseTest {
-  
-  @Test
-  public void validCepContractTest(){
+
+  @Test(description = "Should validate the contract for a valid CEP")
+  public void shouldValidateValidCepContract() {
     viacepClient
     .getCepById()
     .statusCode(SC_OK)
     .body(matchesJsonSchema(new File(SCHEMAS + GET_VALID_CEP_CONTRACT_JSON)));
   }
 
-  @Test
-  public void validButNonexistentCepContractTest(){
+  @Test(description = "Should validate the contract for a valid but non-existent CEP")
+  public void shouldValidateValidButNonexistentCepContract() {
     viacepClient
     .getValidButNonexistentCep()
     .statusCode(SC_OK)
-    .body(matchesJsonSchema(new File(SCHEMAS + GET_VALID_CEP_BUT_NONE_EXISTENT_JSON )));
+    .body(matchesJsonSchema(new File(SCHEMAS + GET_VALID_CEP_BUT_NONE_EXISTENT_JSON)));
   }
 
-  @Test
-  public void validCepByAddressContract(){
+  @Test(description = "Should validate the contract for retrieving a valid CEP by address")
+  public void shouldValidateCepByAddressContract() {
     viacepClient
     .getCepByAddress()
     .statusCode(SC_OK)
     .body(matchesJsonSchema(new File(SCHEMAS + GET_VALID_CEP_BY_ADDRESS_JSON)));
   }
 }
+
