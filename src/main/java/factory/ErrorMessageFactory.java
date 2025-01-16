@@ -1,6 +1,6 @@
 package factory;
 
-import responses.ErrorMessage;
+import dto.ErrorMessage;
 
 public interface ErrorMessageFactory {
 

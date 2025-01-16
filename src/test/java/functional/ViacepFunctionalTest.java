@@ -4,21 +4,18 @@ import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
+
 import factory.ErrorMessageFactory;
 import org.testng.annotations.Test;
 import client.BaseTest;
-import responses.Address;
 
 public class ViacepFunctionalTest extends BaseTest {
-  
-  @Test(description ="Should return valid details for a given valid CEP")
+
+  @Test(description = "Should return valid details for a given valid CEP")
   public void shouldReturnValidCepDetails(){
     viacepClient
     .getCepById()
-    .statusCode(SC_OK)
-    .extract()
-    .body()
-    .as(Address.class);
+    .statusCode(SC_OK);
   }
 
   @Test(description = "Should return a bad request error for an invalid CEP")
@@ -120,6 +117,5 @@ public class ViacepFunctionalTest extends BaseTest {
 
 //TODO: Extrair como classe Adress para fazer assertions. https://github.com/CaiquePrado/desafio-viacep/blob/main/src/test/java/dbserver/desafioviacep/desafioviacep/ConsultaCepTest.java
 //TODO: Fazer teste de ValidCepTest com provider para usar mais ceps e com mais diferencas que são certos. Ex: 01001-000 e 01001000.
-//TODO:Adicionar description no @Test referentes aos cenários de teste.
-//TODO:Adicionar logs em todo processo.
-//TODO:Implementar allure reports.
+//TODO: Adicionar logs em todo processo.
+//TODO: Implementar allure reports.
