@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import factory.ErrorMessageFactory;
 import org.testng.annotations.Test;
-import client.BaseTest;
+import base.BaseTest;
 
 public class ViacepFunctionalTest extends BaseTest {
 
@@ -118,4 +118,4 @@ public class ViacepFunctionalTest extends BaseTest {
 //TODO: Extrair como classe Adress para fazer assertions. https://github.com/CaiquePrado/desafio-viacep/blob/main/src/test/java/dbserver/desafioviacep/desafioviacep/ConsultaCepTest.java
 //TODO: Fazer teste de ValidCepTest com provider para usar mais ceps e com mais diferencas que são certos. Ex: 01001-000 e 01001000.
 //TODO: Adicionar logs em todo processo.
-//TODO: Implementar allure reports.
+//TODO: Allure reports ou extent.

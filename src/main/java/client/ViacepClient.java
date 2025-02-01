@@ -1,8 +1,8 @@
 package client;
 
-import static constants.ApplicationConstants.*;
-import static constants.EndpointConstants.CEP_BY_ID;
-import static constants.EndpointConstants.HTTP_200_UP;
+import static utils.ApplicationConstants.*;
+import static utils.EndpointConstants.CEP_BY_ID;
+import static utils.EndpointConstants.HTTP_200_UP;
 import static io.restassured.RestAssured.given;
 
 import io.restassured.response.ValidatableResponse;

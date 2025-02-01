@@ -1,4 +1,4 @@
-package utils;
+package config;
 import static java.nio.file.Files.newInputStream;
 
 import java.io.IOException;
@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import environment.Environment;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

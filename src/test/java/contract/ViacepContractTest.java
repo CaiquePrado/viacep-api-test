@@ -1,6 +1,6 @@
 package contract;
 
-import static constants.ApplicationConstants.*;
+import static utils.ApplicationConstants.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.apache.http.HttpStatus.SC_OK;
 
@@ -8,7 +8,7 @@ import java.io.File;
 
 import org.testng.annotations.Test;
 
-import client.BaseTest;
+import base.BaseTest;
 
 public class ViacepContractTest extends BaseTest {
 

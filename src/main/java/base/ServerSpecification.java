@@ -1,4 +1,4 @@
-package spec;
+package base;
 
 import static io.restassured.filter.log.LogDetail.ALL;
 import static io.restassured.http.ContentType.JSON;
@@ -7,7 +7,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import utils.PropertiesUtils;
+import config.PropertiesUtils;
 
 @NoArgsConstructor(access =  AccessLevel.PRIVATE)
 public class ServerSpecification {
