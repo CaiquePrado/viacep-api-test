@@ -4,6 +4,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
 }
 
 dependencies {
@@ -15,6 +16,7 @@ dependencies {
     testImplementation 'org.testng:testng:7.10.2'
     implementation 'org.apache.logging.log4j:log4j-api:2.24.1'
     implementation 'org.apache.logging.log4j:log4j-core:2.24.1'
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.29.1'
 }
 
 
@@ -40,5 +42,3 @@ test {
         showStandardStreams true
     }
 }
-
-
