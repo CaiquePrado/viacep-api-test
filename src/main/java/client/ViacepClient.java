@@ -2,7 +2,6 @@ package client;
 
 import static utils.ApplicationConstants.*;
 import static utils.EndpointConstants.CEP_BY_ID;
-import static utils.EndpointConstants.HTTP_200_UP;
 import static io.restassured.RestAssured.given;
 
 import io.restassured.response.ValidatableResponse;
@@ -14,13 +13,6 @@ public class ViacepClient {
 
   public ViacepClient(RequestSpecification requestSpec) {
     this.requestSpec = requestSpec;
-  }
-
-  public ValidatableResponse getHealth(){
-    return given().spec(requestSpec)
-    .when()
-    .get(HTTP_200_UP)
-    .then();
   }
 
   public ValidatableResponse getCepById(){
