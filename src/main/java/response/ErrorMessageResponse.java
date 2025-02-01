@@ -1,8 +1,8 @@
-package factory;
+package response;
 
 import dto.ErrorMessage;
 
-public interface ErrorMessageFactory {
+public interface ErrorMessageResponse {
 
     static ErrorMessage badRequestErrorMessage(){
         return ErrorMessage

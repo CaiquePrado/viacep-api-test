@@ -5,7 +5,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
-import factory.ErrorMessageFactory;
+import response.ErrorMessageResponse;
 import org.testng.annotations.Test;
 import base.BaseTest;
 
@@ -16,9 +16,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getInvalidCepById()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 
   @Test(description = "Should return an error when the CEP is valid but does not exist")
@@ -34,9 +34,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getNoCep()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 
   @Test(description = "Should return a bad request error for an address with an invalid UF")
@@ -44,9 +44,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getCepByAddressInvalidUF()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 
   @Test(description = "Should return a bad request error for an address without UF")
@@ -54,9 +54,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getCepByAddressWithoutUF()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 
   @Test(description = "Should return a bad request error for an address without a city")
@@ -64,9 +64,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getCepByAddressWithoutCity()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 
   @Test(description = "Should return a bad request error for an address with an invalid city")
@@ -74,9 +74,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getCepByAddressInvalidCity()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 
   @Test(description = "Should return a bad request error for an address with an invalid street")
@@ -84,9 +84,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getCepByAddressInvalidStreet()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 
   @Test(description = "Should return a bad request error for an address without a street")
@@ -94,9 +94,9 @@ public class ViacepFunctionalTest extends BaseTest {
     viacepClient
     .getCepByAddressWithoutStreet()
     .statusCode(SC_BAD_REQUEST)
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getStatus()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getTitle()))
-    .body(containsString(ErrorMessageFactory.badRequestErrorMessage().getDetails()));
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getStatus()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getTitle()))
+    .body(containsString(ErrorMessageResponse.badRequestErrorMessage().getDetails()));
   }
 }
 

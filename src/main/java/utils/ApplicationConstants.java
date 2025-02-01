@@ -13,7 +13,7 @@ public class ApplicationConstants {
   public static final String INVALID_CEP = "01001-00";
   public static final String VALID_CEP_BUT_NONE_EXISTENT = "99999-999";
 
-  public static final String VALID_ADDRESS = "RS/Porto/Domingos";
+  public static final String VALID_ADDRESS = "BA/Vitoria/pedrinhas";
   public static final String ADDRESS_WITHOUT_UF = "/PortoAlegre/Domingos";
   public static final String ADDRESS_INVALID_UF = "$*/PortoAlegre/Domingos";
   public static final String ADDRESS_WITHOUT_CITY = "RS/Domingos";

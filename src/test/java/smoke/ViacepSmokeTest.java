@@ -2,23 +2,40 @@ package smoke;
 
 import static org.apache.http.HttpStatus.SC_OK;
 
-import org.testng.annotations.Test;
+import dto.Address;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
+import org.testng.annotations.Test;
 import base.BaseTest;
+import response.AddressResponse;
+
+import java.util.List;
 
 public class ViacepSmokeTest extends BaseTest {
 
     @Test(description = "Should return valid details for a given valid CEP")
     public void shouldReturnValidCepDetails(){
-        viacepClient
+
+        Address expectedAddress = viacepClient
         .getCepById()
-        .statusCode(SC_OK);
+        .statusCode(SC_OK)
+        .extract()
+        .as(Address.class);
+
+        assertThat(expectedAddress, is(AddressResponse.validCepResponse()));
     }
 
     @Test(description = "Should return a valid CEP based on a given address")
     public void shouldReturnValidCepByAddress(){
-        viacepClient
+        List<Address> expectedAddresses = viacepClient
         .getCepByAddress()
-        .statusCode(SC_OK);
+        .statusCode(SC_OK)
+        .extract()
+        .jsonPath()
+        .getList("", Address.class);
+
+        Address expectedAddress = expectedAddresses.getFirst();
+        assertThat(expectedAddress, is(AddressResponse.validCepByAddressResponse()));
     }
 }
