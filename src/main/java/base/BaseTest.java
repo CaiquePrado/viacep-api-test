@@ -22,7 +22,6 @@ public class BaseTest {
           .setBaseUri(PropertiesUtils.getBaseURI(DUMMY_URI))
           .addFilter(new ResponseLoggingFilter())
           .addFilter(new RequestLoggingFilter())
-          .log(io.restassured.filter.log.LogDetail.ALL)
           .build();
 
   protected static ViacepClient viacepClient = new ViacepClient(spec);
