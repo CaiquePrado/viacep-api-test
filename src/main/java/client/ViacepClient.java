@@ -55,6 +55,14 @@ public class ViacepClient {
     .then();
   }
 
+  public ValidatableResponse getCepByAddressInvalidAddress(){
+    return  given().spec(requestSpec)
+    .when()
+    .pathParam("cep",INVALID_ADDRESS)
+    .get(CEP_BY_ID)
+    .then();
+  }
+
   public ValidatableResponse getCepByAddressInvalidUF(){
     return  given().spec(requestSpec)
     .when()

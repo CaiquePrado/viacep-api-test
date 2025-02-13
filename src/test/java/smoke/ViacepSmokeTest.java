@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ViacepSmokeTest extends BaseTest {
 
-    @Test(description = "Should return valid details for a given valid CEP")
+    @Test(description = "CT01-01 : Should return valid details for a given valid CEP")
     public void shouldReturnValidCepDetails(){
 
         Address expectedAddress = viacepClient
@@ -26,7 +26,7 @@ public class ViacepSmokeTest extends BaseTest {
         assertThat(expectedAddress, is(AddressResponse.validCepResponse()));
     }
 
-    @Test(description = "Should return a valid CEP based on a given address")
+    @Test(description = "CT02-01 : Should return a valid CEP based on a given address")
     public void shouldReturnValidCepByAddress(){
         List<Address> expectedAddresses = viacepClient
         .getCepByAddress()
