@@ -141,7 +141,7 @@
 
 ---
 
-### CT02-06: Consulta um CEP com cidade válida porém inexistente no Estado  
+### CT02-06: Consulta um CEP com UF inválida  
 **Dado** que o usuário tem um `<UF>`, a `<cidade>` e `<logradouro>`  
 **Quando** o usuário faz uma requisição `GET` para a API ViaCEP com o endereço  
 **Então** a API deve retornar um status de sucesso `"200"`  
@@ -150,13 +150,28 @@
 #### Exemplos:
 | UF | Cidade         | Logradouro |
 |----|--------------|-----------|
-| RS | São Gonçalo  | 1         |
-| SP | Santa Catarina | Paulista  |
-| BA | Belo Horizonte | Santana  |
+| X | Porto Alegre  | Santana         |
+| 22 | São Paulo | Paulista  |
+| [( | Salvador | Santana  |
 
 ---
 
-### CT02-07: Consulta um CEP com logradouro válido porém inexistente na cidade  
+### CT02-07: Consulta um CEP com cidade inválida  
+**Dado** que o usuário tem um `<UF>`, a `<cidade>` e `<logradouro>`  
+**Quando** o usuário faz uma requisição `GET` para a API ViaCEP com o endereço  
+**Então** a API deve retornar um status de sucesso `"200"`  
+**E** a API deve retornar um array vazio.  
+
+#### Exemplos:
+| UF | Cidade         | Logradouro |
+|----|--------------|-----------|
+| RS | #Cidade123  | Santana         |
+| SP | "XY" | Paulista  |
+| BA | 123 | Santana  |
+
+---
+
+### CT02-08: Consulta um CEP com logradouro inválido
 **Dado** que o usuário tem um `<UF>`, a `<cidade>` e `<logradouro>`  
 **Quando** o usuário faz uma requisição `GET` para a API ViaCEP com o endereço  
 **Então** a API deve retornar um status de sucesso `"200"`  
@@ -165,9 +180,9 @@
 #### Exemplos:
 | UF | Cidade        | Logradouro          |
 |----|-------------|--------------------|
-| RS | Porto Alegre | Frei Benjamin     |
-| SP | São Paulo    | Alto Maron        |
-| BA | Salvador     | Morada dos Pássaros |
+| RS | Porto Alegre | ´-[     |
+| SP | São Paulo    | 425df        |
+| BA | Salvador     | @#@ |
 
 ---
 
