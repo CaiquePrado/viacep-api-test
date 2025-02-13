@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "fb44f996-3c90-420e-a426-844fce1aa43e",
+		"name": "Viacep-api-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40714549"
+	},
+	"item": [
+		{
+			"name": "GetCepByZipCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has all expected fields\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedKeys = [\"cep\", \"logradouro\", \"complemento\", \"unidade\", \"bairro\", \"localidade\", \"uf\", \"estado\", \"regiao\", \"ibge\", \"gia\", \"ddd\", \"siafi\"];\r",
+							"    expectedKeys.forEach(key => pm.expect(jsonData).to.have.property(key));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/45005154/json/",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"45005154",
+						"json",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCepByAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Resposta deve ser um array\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    let responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an(\"array\");\r",
+							"});\r",
+							"\r",
+							"const expectedFields = {\r",
+							"    \"cep\": \"string\",\r",
+							"    \"logradouro\": \"string\",\r",
+							"    \"complemento\": \"string\",\r",
+							"    \"unidade\": \"string\",\r",
+							"    \"bairro\": \"string\",\r",
+							"    \"localidade\": \"string\",\r",
+							"    \"uf\": \"string\",\r",
+							"    \"estado\": \"string\",\r",
+							"    \"regiao\": \"string\",\r",
+							"    \"ibge\": \"string\",\r",
+							"    \"gia\": \"string\",\r",
+							"    \"ddd\": \"string\",\r",
+							"    \"siafi\": \"string\"\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Todos os itens possuem os campos obrigatórios e tipos corretos\", function () {\r",
+							"    let responseJson = pm.response.json();\r",
+							"    \r",
+							"    responseJson.forEach((item, index) => {\r",
+							"        Object.keys(expectedFields).forEach(field => {\r",
+							"            pm.expect(item).to.have.property(field);\r",
+							"            pm.expect(item[field]).to.be.a(expectedFields[field]);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/RS/Porto/Domingos/json/",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"RS",
+						"Porto",
+						"Domingos",
+						"json",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URI",
+			"value": "https://viacep.com.br/ws/",
+			"type": "default"
+		}
+	]
+}
