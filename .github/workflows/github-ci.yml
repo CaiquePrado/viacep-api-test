@@ -21,15 +21,6 @@ jobs:
       - name: Run Smoke Tests
         run: gradle clean test --tests 'ViacepSmokeTest'
 
-      - name: Generate Allure Report
-        run: gradle allureReport
-
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report-smoke
-          path: build/allure-results
-
   contract:
     name: Contract
     runs-on: ubuntu-24.04
@@ -43,15 +34,6 @@ jobs:
       - name: Run Contract Tests
         run: gradle clean test --tests 'ViacepContractTest'
 
-      - name: Generate Allure Report
-        run: gradle allureReport
-
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report-contract
-          path: build/allure-results
-
   functional:
     name: Functional
     runs-on: ubuntu-24.04
@@ -64,12 +46,3 @@ jobs:
 
       - name: Run Functional Tests
         run: gradle clean test --tests 'ViacepFunctionalTest'
-
-      - name: Generate Allure Report
-        run: gradle allureReport
-
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report-functional
-          path: build/allure-results
