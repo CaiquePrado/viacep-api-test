@@ -16,7 +16,7 @@ jobs:
       image: gradle:8.12.0-jdk21
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run Smoke Tests
         run: gradle clean test --tests 'ViacepSmokeTest'
@@ -25,7 +25,7 @@ jobs:
         run: gradle allureReport
 
       - name: Upload Allure Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report-smoke
           path: build/reports/allure-report
@@ -38,7 +38,7 @@ jobs:
       image: gradle:8.12.0-jdk21
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run Contract Tests
         run: gradle clean test --tests 'ViacepContractTest'
@@ -47,7 +47,7 @@ jobs:
         run: gradle allureReport
 
       - name: Upload Allure Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report-contract
           path: build/reports/allure-report
@@ -60,7 +60,7 @@ jobs:
       image: gradle:8.12.0-jdk21
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run Functional Tests
         run: gradle clean test --tests 'ViacepFunctionalTest'
@@ -69,7 +69,7 @@ jobs:
         run: gradle allureReport
 
       - name: Upload Allure Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report-functional
           path: build/reports/allure-report
