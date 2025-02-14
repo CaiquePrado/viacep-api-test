@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-smoke
-          path: build/reports/allure-report
+          path: build/allure-results
 
   contract:
     name: Contract
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-contract
-          path: build/reports/allure-report
+          path: build/allure-results
 
   functional:
     name: Functional
@@ -72,4 +72,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-functional
-          path: build/reports/allure-report
+          path: build/allure-results
