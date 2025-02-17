@@ -1,11 +1,9 @@
 package dto;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 
-@Data
 @Builder
-public class ErrorMessage {
-    private String title;
-    private String status;
-    private String details;
-}
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record ErrorMessage(String title, String status, String details) {}
+
