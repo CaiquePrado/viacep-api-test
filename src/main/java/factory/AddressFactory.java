@@ -1,8 +1,8 @@
-package response;
+package factory;
 
 import dto.Address;
 
-public interface AddressResponse {
+public interface AddressFactory {
 
     static Address validCepResponse() {
         return Address.builder()

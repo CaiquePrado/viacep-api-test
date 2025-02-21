@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 
 import org.testng.annotations.Test;
 import base.BaseTest;
-import response.AddressResponse;
+import factory.AddressFactory;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class ViacepSmokeTest extends BaseTest {
         .extract()
         .as(Address.class);
 
-        assertThat(expectedAddress, is(AddressResponse.validCepResponse()));
+        assertThat(expectedAddress, is(AddressFactory.validCepResponse()));
     }
 
     @Test(description = "CT02-01 : Should return a valid CEP based on a given address")
@@ -36,6 +36,6 @@ public class ViacepSmokeTest extends BaseTest {
         .getList("", Address.class);
 
         Address expectedAddress = expectedAddresses.getFirst();
-        assertThat(expectedAddress, is(AddressResponse.validCepByAddressResponse()));
+        assertThat(expectedAddress, is(AddressFactory.validCepByAddressResponse()));
     }
 }
