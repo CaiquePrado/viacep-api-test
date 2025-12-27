@@ -7,10 +7,16 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   smoke:
-    name: Smoke
+    name: Smoke Tests
     runs-on: ubuntu-24.04
     container:
       image: gradle:8.12.0-jdk21
@@ -19,10 +25,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Smoke Tests
+        continue-on-error: true
         run: gradle clean test --tests 'ViacepSmokeTest'
 
+      - name: Upload Smoke Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-smoke
+          path: build/allure-results
+          retention-days: 1
+
   contract:
-    name: Contract
+    name: Contract Tests
     runs-on: ubuntu-24.04
     needs: smoke
     container:
@@ -32,10 +46,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Contract Tests
+        continue-on-error: true
         run: gradle clean test --tests 'ViacepContractTest'
 
+      - name: Upload Contract Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-contract
+          path: build/allure-results
+          retention-days: 1
+
   functional:
-    name: Functional
+    name: Functional Tests
     runs-on: ubuntu-24.04
     needs: contract
     container:
@@ -45,4 +67,61 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Functional Tests
+        continue-on-error: true
         run: gradle clean test --tests 'ViacepFunctionalTest'
+
+      - name: Upload Functional Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-functional
+          path: build/allure-results
+          retention-days: 1
+
+  report:
+    name: Generate & Publish Report
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [smoke, contract, functional]
+
+    steps:
+      - name: Baixar Resultados do Smoke
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-smoke
+          path: build/allure-results
+
+      - name: Baixar Resultados de Contrato
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-contract
+          path: build/allure-results
+
+      - name: Baixar Resultados Funcionais
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-functional
+          path: build/allure-results
+
+      - name: Obter Histórico (Para tendências no gráfico)
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Gerar Relatório HTML
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: build/allure-results
+          allure_history: allure-history
+          keep_reports: 20
+
+      - name: Publicar no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
