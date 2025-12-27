@@ -1,4 +1,4 @@
-name: CI
+name: CI (Allure New Mode)
 
 on:
   push:
@@ -78,11 +78,10 @@ jobs:
           retention-days: 1
 
   report:
-    name: Generate & Publish Report
+    name: Generate Report
     runs-on: ubuntu-latest
     if: always()
     needs: [smoke, contract, functional]
-
     steps:
       - name: Baixar Resultados do Smoke
         uses: actions/download-artifact@v4
@@ -102,7 +101,7 @@ jobs:
           name: allure-results-functional
           path: build/allure-results
 
-      - name: Obter Histórico (Para tendências no gráfico)
+      - name: Obter Histórico Antigo
         uses: actions/checkout@v4
         if: always()
         continue-on-error: true
@@ -118,10 +117,33 @@ jobs:
           allure_history: allure-history
           keep_reports: 20
 
-      - name: Publicar no GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Salvar Histórico na Branch
         if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          cp -R allure-history/history/* gh-pages/last-history/ || true
+          cd gh-pages
+          git add .
+          git commit -m "Update history data" || echo "Nada para commitar"
+          git push origin gh-pages
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
+          path: allure-history
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: report
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
