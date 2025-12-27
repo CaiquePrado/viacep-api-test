@@ -1,4 +1,4 @@
-name: CI (Allure New Mode)
+name: CI
 
 on:
   push:
@@ -8,6 +8,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1' # Roda toda segunda-feira às 06:00
 
 permissions:
   contents: write
